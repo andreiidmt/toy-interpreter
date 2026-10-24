@@ -1,0 +1,8 @@
+package interpreter.model.expression;
+
+import interpreter.exceptions.MyException;
+import interpreter.model.value.IValue;
+
+public interface IExp {
+    IValue eval(IDictionary<String, IValue> symTable) throws MyException;
+}
