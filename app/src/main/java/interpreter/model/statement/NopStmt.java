@@ -1,6 +1,7 @@
 package interpreter.model.statement;
 
 import interpreter.exceptions.MyException;
+import interpreter.model.PrgState;
 
 public record NopStmt() implements IStmt {
     @Override

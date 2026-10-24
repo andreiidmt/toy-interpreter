@@ -2,6 +2,7 @@ package interpreter.model.statement;
 
 import interpreter.exceptions.MyException;
 import interpreter.exceptions.StatementException;
+import interpreter.model.PrgState;
 import interpreter.model.expression.IExp;
 import interpreter.model.value.IValue;
 

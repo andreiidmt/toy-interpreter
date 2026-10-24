@@ -2,6 +2,7 @@ package interpreter.model.statement;
 
 import interpreter.exceptions.MyException;
 import interpreter.exceptions.StatementException;
+import interpreter.model.PrgState;
 import interpreter.model.type.IType;
 
 public record VarDeclStmt(String name, IType type) implements IStmt {

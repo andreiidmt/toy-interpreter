@@ -1,5 +1,7 @@
 package interpreter.model.statement;
 
+import interpreter.model.PrgState;
+
 import java.time.chrono.IsoChronology;
 
 public record CompStmt(IStmt first, IStmt second) implements IStmt {
