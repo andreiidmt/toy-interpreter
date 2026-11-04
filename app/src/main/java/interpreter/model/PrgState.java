@@ -6,7 +6,6 @@ import interpreter.model.value.IValue;
 import interpreter.model.value.StringValue;
 
 import java.io.BufferedReader;
-import java.nio.Buffer;
 
 public class PrgState {
     private IStack<IStmt> exeStack;

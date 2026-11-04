@@ -17,7 +17,7 @@ public record OpenRFileStmt(IExp exp) implements IStmt {
             throw new StatementException("openRFile: " + exp + " is not a string");
         var fileTable = state.getFileTable();
         if (fileTable.isDefined(fileName))
-            throw new StatementException("openRFile: " + fileTable + " is already open");
+            throw new StatementException("openRFile: " + fileName + " is already open");
         try{
             var reader = new BufferedReader(new FileReader(fileName.val()));
             fileTable.put(fileName, reader);

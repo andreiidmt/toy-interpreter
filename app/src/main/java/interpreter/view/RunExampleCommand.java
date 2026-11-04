@@ -22,7 +22,7 @@ public class RunExampleCommand extends Command{
         try{
             controller.allStep();
         }catch(MyException e){
-            System.out.print("Error: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }
