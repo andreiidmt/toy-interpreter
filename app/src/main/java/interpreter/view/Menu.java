@@ -56,7 +56,7 @@ public class Menu {
             System.out.println("Select a program first.");
             return;
         }
-        PrgState state = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), selected);
+        PrgState state = PrgState.of(selected);
 
         Controller cont = new Controller(new Repository(state), true);
         try{

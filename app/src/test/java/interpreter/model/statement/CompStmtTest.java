@@ -17,8 +17,7 @@ class CompStmtTest {
 
     @BeforeEach
     void setUp() {
-        state = new PrgState(new MyStack<>(), new MyDictionary<>(),
-                new MyList<>(), new NopStmt());
+        state = PrgState.of(new NopStmt());
     }
 
     void firstEndsUpOnTopOfSecond() throws MyException {
