@@ -9,6 +9,7 @@ import interpreter.model.expression.ValueExp;
 import interpreter.model.type.IntType;
 import interpreter.model.value.IntValue;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,6 +21,7 @@ class CompStmtTest {
         state = PrgState.of(new NopStmt());
     }
 
+    @Test
     void firstEndsUpOnTopOfSecond() throws MyException {
         IStmt first = new VarDeclStmt("a", new IntType());
         IStmt second = new PrintStmt(new ValueExp(new IntValue(1)));
