@@ -5,7 +5,10 @@ import interpreter.exceptions.StatementException;
 import interpreter.model.PrgState;
 import interpreter.model.statement.IStmt;
 import interpreter.model.statement.NopStmt;
+import interpreter.model.type.IntType;
+import interpreter.model.type.RefType;
 import interpreter.model.value.IntValue;
+import interpreter.model.value.RefValue;
 import interpreter.repository.Repository;
 import interpreter.view.Examples;
 import org.junit.jupiter.api.Test;
@@ -90,4 +93,38 @@ class ControllerTest {
         assertEquals(new IntValue(5), s.getOut().get(0));
     }
 
+    @Test
+    void ex6PrintsBothReferences() throws MyException {
+        PrgState s = run(Examples.ex6);
+        assertEquals(new RefValue(1, new IntType()), s.getOut().get(0));
+        assertEquals(new RefValue(2, new RefType(new IntType())), s.getOut().get(1));
+    }
+
+    @Test
+    void ex7ReadsThroughBothReferences() throws MyException {
+        PrgState s = run(Examples.ex7);
+        assertEquals(new IntValue(20), s.getOut().get(0));
+        assertEquals(new IntValue(25), s.getOut().get(1));
+    }
+
+    @Test
+    void ex8WriteChangesTheHeapValue() throws MyException {
+        PrgState s = run(Examples.ex8);
+        assertEquals(new IntValue(20), s.getOut().get(0));
+        assertEquals(new IntValue(35), s.getOut().get(1));
+    }
+
+    @Test
+    void ex9PrintsTwentyWithTheSafeCollector() throws MyException {
+        PrgState s = run(Examples.ex9);
+        assertEquals(new IntValue(20), s.getOut().get(0));
+    }
+
+    @Test
+    void ex10LoopCountsDownToZero() throws MyException {
+        PrgState s = run(Examples.ex10);
+        assertEquals(5, s.getOut().size());
+        assertEquals(new IntValue(4), s.getOut().get(0));
+        assertEquals(new IntValue(0), s.getOut().get(4));
+    }
 }
