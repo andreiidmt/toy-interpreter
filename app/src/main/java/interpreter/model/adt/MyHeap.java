@@ -1,5 +1,6 @@
 package interpreter.model.adt;
 
+import interpreter.exceptions.ADTException;
 import interpreter.model.value.IValue;
 
 import java.util.HashMap;
@@ -11,6 +12,42 @@ public class MyHeap  implements IHeap{
 
     @Override
     public int allocate(IValue value){
-        
+        int address = nextFree++;
+        heap.put(address, value);
+        return address;
+    }
+
+    @Override
+    public void setContent(Map<Integer, IValue> content){
+        heap = new HashMap<>(content);
+    }
+
+    @Override
+    public boolean isDefined(int address){
+        return heap.containsKey(address);
+    }
+
+    @Override
+    public IValue get(int address) throws ADTException{
+        if (!isDefined(address))
+            throw new ADTException("address " + address + " is not in the heap");
+        return heap.get(address);
+    }
+
+    @Override
+    public void update(int address, IValue value) throws ADTException{
+        if (!isDefined(address))
+            throw new ADTException("address " + address + " is not in the heap");
+        heap.put(address, value);
+    }
+
+    @Override
+    public Map<Integer, IValue> getContent(){
+        return Map.copyOf(heap);
+    }
+
+    @Override
+    public String toString(){
+        return heap.toString();
     }
 }
